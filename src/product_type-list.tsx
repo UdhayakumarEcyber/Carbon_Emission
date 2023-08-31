@@ -3,6 +3,11 @@ import React, { useState } from 'react';
  
 import EmissionProductBarChart from './emission-product-bar_chart';
 
+interface ProductTypeListProps {
+  checkedItems: string[];
+  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
 
 const ProductTypeList: React.FunctionComponent<{}> = (props) => {  
   const list = [
@@ -73,7 +78,7 @@ const ProductTypeList: React.FunctionComponent<{}> = (props) => {
     return (  <> 
 
             <ProductType />
-         
+            {/* <EmissionProductBarChart/> */}
         </>
     )
 };

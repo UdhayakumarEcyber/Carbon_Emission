@@ -1,34 +1,38 @@
 import React, { useState } from 'react'; 
  
 import { DataList, WidgetWrapper, DataTable, MapComponent, Modal, TitleBar, ItemListCard, FilterPanel, DataGrid, ItemCard, FormField, Label, Select, Input, DateRangePicker, DatePicker, Checkbox, ProfileImage, Popover, TrendChartComponent, ToggleFilter } from "uxp/components";
+   
+import EmissionProductPieChart from './emission-product-pie_chart';  
+import CarbonEmissionOverTimeChart from './carbon_emission-overtime-chart';   
+import EmissionProductShow from './emission-product-show'
 
+
+const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
+  
+
+    let [showModal, setShowModal] = React.useState(false);
+    let [modelData, setModelData] = React.useState<any>(null);
+    let [inputValue, setInputValue] = React.useState<string | null>('CAPITALLAND');
+    let [selected, setSelected] = React.useState<string | null>('op-1');
+    const [checkedItems, setCheckedItems] = useState<string[]>([]); // Lift state up
+  
+    interface CheckboxListProps {
+        checkedItems: string[];
+        setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>;
+      }
+
+      
+
+    function CheckboxList({ checkedItems, setCheckedItems }: CheckboxListProps) {
  
 
-import EmissionProductBarChart from './emission-product-bar_chart';
+     const [selectAll, setSelectAll] = useState(false); 
+       // const [showCheckedItems, setShowCheckedItems] = useState(false); 
 
- import EmissionProductShow from './emission-product-show';
+//   const handleToggleCheckedItems = () => {
+//     setShowCheckedItems(!showCheckedItems);
+//   }; 
 
- import CarbonEmissionOverTimeChart from './carbon_emission-overtime-chart';
-
-
-const EmissionProductList: React.FunctionComponent<{}> = (props) => { 
-  
-
-  let [showModal, setShowModal] = React.useState(false);  
-  let[modelData, setmodelData] = React.useState<any>(null); 
-
-  let [inputValue, setInputValue] = React.useState<string | null>("CAPITALLAND");
-  let [selected, setSelected] = React.useState<string | null>("op-1");
-
-
-function CheckboxList() { 
-
-  
-  const [selectAll, setSelectAll] = useState(false);
-  
-  const [showCheckedItems, setShowCheckedItems] = useState(false);  
-  
-  
 
     const itemTypeList = [
       { id: 1, label: 'Type 1', value: '358', color : '#66bff1' },
@@ -43,45 +47,23 @@ function CheckboxList() {
       { id: 10, label: 'Type 10', value: '085', color : '#ba6ff1' },
       { id: 11, label: 'Type 11', value: '295', color : '#8f802b' },
       { id: 12, label: 'Type 12', value: '261', color : '#e78974'  }, 
-    ];
+    ];   
+      
+      const handleSelectAll = () => {
+        if (selectAll) {
+          setCheckedItems([]);
+        } else {
+          setCheckedItems(itemTypeList.map((item) => item.label));
+        }
+        setSelectAll(!selectAll);
+      }; 
 
-     
-  
-
-  const handleSelectAll = () => {
-    if (selectAll) {
-      setCheckedItems([]);
-    } else {
-      setCheckedItems(itemTypeList.map((item) => item.label));
-    }
-    setSelectAll(!selectAll);
-  };
-
-  const handleToggleCheckedItems = () => {
-      setShowCheckedItems(!showCheckedItems);
-    };
-
- 
-    // const [selectAll, setSelectAll] = useState(false);
-
-    // const handleSelectAll = () => {
-    //   if (selectAll) {
-    //     setCheckedItems([]);
-    //   } else {
-    //     setCheckedItems(itemTypeList.map((item) => item.label));
-    //   }
-    //   setSelectAll(!selectAll);
-    // };
 
     const [searchTypeQuery, setsearchTypeQuery] = useState("");
 
     function setTypeListShowModal(arg0: boolean): void {
       throw new Error('Function not implemented.');
-    }
-  
-    const [checkedItems, setCheckedItems] = useState([]); 
-
-    // const [showCheckedItems, setShowCheckedItems] = useState(false); 
+    } 
     
     const handleCheckboxChange = (itemId:any) => {
       if (checkedItems.includes(itemId)) {
@@ -89,17 +71,7 @@ function CheckboxList() {
       } else {
         setCheckedItems([...checkedItems, itemId]);
       }
-    };
-  
-  
-
-    // const handleToggleCheckedItems = () => {
-    //     setShowCheckedItems(!showCheckedItems);
-    //   };
-
-
- 
-
+    }; 
 
         const list = [
           {
@@ -165,11 +137,11 @@ function CheckboxList() {
           );
         };
 
- 
-      
+
+        
       const [selectAll1, setSelectAll1] = useState(false);
   
-      const [showCheckedItems1, setShowCheckedItems1] = useState(false);  
+      const [showCheckedItems1, setShowCheckedItems1] = useState(true);  
       
     
       const handleSelectAll1 = () => {
@@ -211,14 +183,8 @@ function CheckboxList() {
             } else {
               setCheckedItems1([...checkedItems1, itemId]);
             }
-          };  
-
-          function setProductListShowModal(arg0: boolean): void {
-            throw new Error('Function not implemented.');
-          } 
-
-
-
+          };   
+   
   
     return (
       <>
@@ -286,9 +252,12 @@ function CheckboxList() {
                             ))}
                         </ul> 
 
-            </div>  
 
-          <Modal title='PRODUCT WISE CARBON EMISSION'
+                        
+
+
+                      
+<Modal title='PRODUCT WISE CARBON EMISSION'
               show={showModal}
               onOpen={() => { }}
               onClose={() => setShowModal(false)}  
@@ -380,7 +349,7 @@ function CheckboxList() {
                                       <div className="product_type-box">
                                         <div
                                           className="emis-list-box"
-                                          onClick={() => setProductListShowModal(true)}
+                                          
                                           style={{ backgroundColor: product.color }}
                                         >
                                           {product.label}
@@ -444,26 +413,42 @@ function CheckboxList() {
 
           </Modal>
 
+
+            </div>  
+
+           
+
       </> 
 
     );
   }
+
  
  
+ 
 
-    return (  <> 
+    return (  
 
-            <div className="carbon_product_type"> 
 
-                <div className="product_type-list">
-                        <CheckboxList/>
+        <>
+ 
+            <div className="overall-section" style={{ display: 'inline-block', width: '100%' }}>
+                <div className="carbon_product_type">
+                    <div className="product_type-list">
+                        <CheckboxList checkedItems={checkedItems} setCheckedItems={setCheckedItems} />
+                    </div>
                 </div>
+                <EmissionProductPieChart />
 
-            </div>
+                <div style={{ display: 'inline-block', width: '100%' }}>  
+                        <EmissionProductShow  checkedItems={checkedItems} setCheckedItems={setCheckedItems}/>
+                </div>
+            </div> 
          
         </>
+
     )
 };
 
 
-export default EmissionProductList;
+export default EmissionTypeOverall;

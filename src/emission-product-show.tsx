@@ -1,67 +1,52 @@
-import React, { useState } from 'react'; 
- 
- 
-import EmissionProductBarChart from './emission-product-bar_chart'; 
+import React, { useState } from 'react';  
+import EmissionProductBarChart from './emission-product-bar_chart';  
+import ProductTypeList from './product_type-list'; 
 
-import ProductTypeList from './product_type-list';
-  
 
-const EmissionProductShow: React.FunctionComponent<{}> = (props) => { 
-  
+interface EmissionProductShowProps {
+  checkedItems: string[];
+  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>;
+} 
 
-function CheckboxList() { 
-    
-  
-    const [checkedItems, setCheckedItems] = useState([]); 
+function EmissionProductShow({ checkedItems, setCheckedItems }: EmissionProductShowProps) {
+  const [showCheckedItems, setShowCheckedItems] = useState(false);
 
-    const [showCheckedItems, setShowCheckedItems] = useState(false);
- 
+  const handleToggleCheckedItems = () => {
+    setShowCheckedItems(!showCheckedItems);
+  }; 
 
-    const handleToggleCheckedItems = () => {
-        setShowCheckedItems(!showCheckedItems);
-      };
-  
+
     return (
-    
-        <>   
-
-        <div className='check-list-item'> 
-            <p>
+      <>
+        <div className="check-list-item">
+          <p>
             <input
               type="checkbox"
               checked={showCheckedItems}
               onChange={handleToggleCheckedItems}
             />
-            Emission Composition: 
-            <b> {checkedItems.join(', ')}</b></p>
-        </div>
+            Emission Composition :
+            <b> {checkedItems.join(', ')}</b>
+          </p>
+        </div> 
 
-        {showCheckedItems && (
+{showCheckedItems && (
           
-            <div className='emission-check-list' > 
-                <ProductTypeList/>
-
-                <EmissionProductBarChart/> 
-
-            </div>
-      )} 
+              <div className='emission-check-list' > 
+                    <ProductTypeList/>  
+  
+                    <EmissionProductBarChart/>   
+  
+              </div>
+        )}  
 
       </>
     );
   }
-
-
+  
  
  
-
-    return (  <> 
-
-            
-                        <CheckboxList/>
-              
-        </>
-    )
-};
+ 
 
 
 export default EmissionProductShow;

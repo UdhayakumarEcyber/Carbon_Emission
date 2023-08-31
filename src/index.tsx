@@ -7,17 +7,8 @@ import './styles.scss';
 
 import { ResponsiveContainer, PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, ComposedChart, } from 'recharts';
 import { render } from "react-dom"; 
-
-
-import EmissionProductList from './emission-product-list'; 
-import EmissionProductPieChart from './emission-product-pie_chart';
-
-import EmissionProductShow from './emission-product-show';
-
-
-import EmissionProductBarChart from './emission-product-bar_chart';
-
  
+import EmissionTypeOverall from './emission-type-overall'
 
 
 interface IWidgetProps {
@@ -102,11 +93,14 @@ const handleSubmit = () => {
                     
             <div className="body">
 
-               <EmissionProductList/> 
+
+                  <EmissionTypeOverall/>  
+
+               {/* <EmissionProductList/> 
 
                <EmissionProductPieChart/> 
 
-               <EmissionProductShow/> 
+               <EmissionProductShow/>  */}
                
 
             </div>  

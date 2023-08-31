@@ -4,8 +4,7 @@ import React, { useState } from 'react';
  
 import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-
-  
+ 
 
 const EmissionProductBarChart: React.FunctionComponent<{}> = (props) => {  
  
@@ -37,30 +36,38 @@ function nextColor() {
  }
 
 
+
+ function getData() {
+
+  return [
+    {
+      name: 'Type 01',
+      data: [4, 4, 2, 4, 4]
+    },
+    {
+      name: 'Type 02',
+      data: [10, 4, 3, 21, 3]
+    },
+    {
+      name: 'Type 03',
+      data: [12, 17, 15, 10, 20]
+    },
+    {
+      name: 'Type 04',
+      data: [11, 20, 12, 40, 18]
+    },
+    {
+      name: 'Type 05',
+      data: [1, 5, 20, 41, 24]
+    }
+  ];
+}
+
  function MyHighchartsComponent() {
 
-    var series = [
-        {
-          name: 'Type 01',
-          data: [4, 4, 2, 4, 4]
-        },
-        {
-          name: 'Type 02',
-          data: [10, 4, 3, 21, 3]
-        },
-        {
-          name: 'Type 03',
-          data: [12, 17, 15, 10, 20]
-        },
-        {
-          name: 'Type 04',
-          data: [11, 20, 12, 40, 18]
-        },
-        {
-          name: 'Type 05',
-          data: [1, 5, 20, 41, 24]
-        }
-      ]
+
+  const series = getData();
+ 
 
       const categories = series.map((item) => item.name);  
 

@@ -178,12 +178,22 @@
                     display: inline-flex;
                     width: 90%;
                     padding: 0px 0;
+                    cursor: pointer;
+
+                    &:hover{
+                        .emis-list-box{
+                            
+                            color: rgb(93, 17, 155);
+                        }
+                    }
 
                     .emis-list-box{
                         display: inline-block;
                         width: 80%;
                         padding: 15px 15px;
                         color: #fff;
+
+                        
                     }
                     .emis-list-txt{
                         display: inline-block;
@@ -241,6 +251,16 @@
                     display: inline-flex;
                     width: 90%;
                     padding: 0px 0;
+                   
+                    &:hover{
+                       
+
+                        .emis-list-box{
+                            background-color: #424242!important;
+                            cursor: pointer;
+                            // color: rgb(3, 3, 3);
+                        }
+                    }
 
                     .emis-list-box{
                         display: inline-block;
