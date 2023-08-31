@@ -37,7 +37,7 @@ function nextColor() {
 
 
 
- function getData() {
+ function getBarChatData() {
 
   return [
     {
@@ -66,10 +66,10 @@ function nextColor() {
  function MyHighchartsComponent() {
 
 
-  const series = getData();
+  const series = getBarChatData();
  
 
-      const categories = series.map((item) => item.name);  
+    const categories = series.map((item) => item.name);  
 
     const options = {
       chart: {

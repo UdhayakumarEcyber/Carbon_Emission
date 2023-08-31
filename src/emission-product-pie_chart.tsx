@@ -1,6 +1,27 @@
 import React from 'react'; 
   
 import { ResponsivePie } from '@nivo/pie';
+
+
+
+function getPieChatData() {
+
+    return [
+        { id: 'Type 1', label: 'Type 1', value: '358', color : '#66bff1' },
+        { id: 'Type 2', label: 'Type 2', value: '267', color : '#1a7f55'  },
+        { id: 'Type 3', label: 'Type 3', value: '354', color : '#692a72'  }, 
+        { id: 'Type 4', label: 'Type 4', value: '268', color : '#7a331b'  },
+        { id: 'Type 5', label: 'Type 5', value: '315', color : '#eb98ac'  },
+        { id: 'Type 6', label: 'Type 6', value: '105', color : '#638aad'  }, 
+        { id: 'Type 7', label: 'Type 7', value: '187', color : '#43b290'  },
+        { id: 'Type 8', label: 'Type 8', value: '305', color : '#676419' },
+        { id: 'Type 9', label: 'Type 9',  value: '264', color : '#48aa9e' }, 
+        { id: 'Type 10', label: 'Type 10', value: '085', color : '#ba6ff1' },
+        { id: 'Type 11', label: 'Type 11', value: '295', color : '#8f802b' },
+        { id: 'Type 12', label: 'Type 12', value: '261', color : '#e78974'  } 
+    ];
+  }
+
  
  
 const EmissionProductPieChart: React.FunctionComponent<{}> = (props) => {
@@ -40,27 +61,30 @@ const EmissionProductPieChart: React.FunctionComponent<{}> = (props) => {
 //   ]
 
 
-var emissionPieData =[
-{ id: 'Type 1', label: 'Type 1', value: '358', color : '#66bff1' },
-{ id: 'Type 2', label: 'Type 2', value: '267', color : '#1a7f55'  },
-{ id: 'Type 3', label: 'Type 3', value: '354', color : '#692a72'  }, 
-{ id: 'Type 4', label: 'Type 4', value: '268', color : '#7a331b'  },
-{ id: 'Type 5', label: 'Type 5', value: '315', color : '#eb98ac'  },
-{ id: 'Type 6', label: 'Type 6', value: '105', color : '#638aad'  }, 
-{ id: 'Type 7', label: 'Type 7', value: '187', color : '#43b290'  },
-{ id: 'Type 8', label: 'Type 8', value: '305', color : '#676419' },
-{ id: 'Type 9', label: 'Type 9',  value: '264', color : '#48aa9e' }, 
-{ id: 'Type 10', label: 'Type 10', value: '085', color : '#ba6ff1' },
-{ id: 'Type 11', label: 'Type 11', value: '295', color : '#8f802b' },
-{ id: 'Type 12', label: 'Type 12', value: '261', color : '#e78974'  }, 
-]
 
+// var emissionPieData =[ 
 
+// { id: 'Type 1', label: 'Type 1', value: '358', color : '#66bff1' },
+// { id: 'Type 2', label: 'Type 2', value: '267', color : '#1a7f55'  },
+// { id: 'Type 3', label: 'Type 3', value: '354', color : '#692a72'  }, 
+// { id: 'Type 4', label: 'Type 4', value: '268', color : '#7a331b'  },
+// { id: 'Type 5', label: 'Type 5', value: '315', color : '#eb98ac'  },
+// { id: 'Type 6', label: 'Type 6', value: '105', color : '#638aad'  }, 
+// { id: 'Type 7', label: 'Type 7', value: '187', color : '#43b290'  },
+// { id: 'Type 8', label: 'Type 8', value: '305', color : '#676419' },
+// { id: 'Type 9', label: 'Type 9',  value: '264', color : '#48aa9e' }, 
+// { id: 'Type 10', label: 'Type 10', value: '085', color : '#ba6ff1' },
+// { id: 'Type 11', label: 'Type 11', value: '295', color : '#8f802b' },
+// { id: 'Type 12', label: 'Type 12', value: '261', color : '#e78974'  } 
+
+// ]
+
+const series = getPieChatData();
 
 
 const MyResponsivePie = ({  }) => (
     <ResponsivePie
-        data={emissionPieData}
+        data={series}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
         innerRadius={0.5}
         padAngle={0.7}

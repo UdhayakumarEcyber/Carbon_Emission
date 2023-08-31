@@ -22,43 +22,76 @@ interface IWidgetProps {
     uxpContext?: IContextProvider,
     instanceId?: string
 }
+
+
+function getOvertimeData() {
+
+    return [
+        {
+            year: '2019', 
+            data: [3, 4, 5, 6, 7]
+        }, 
+        {
+            year: '2020', 
+            data: [4, 5, 6, 7, 8]
+        },
+        {
+            year: '2021', 
+            data: [6, 7, 8, 9, 10]
+        },
+        {
+            year: '2022', 
+            data: [0, 0, 0, 0, 0]
+        },
+        {
+            year: '2023', 
+            data: [0, 0, 0, 0, 0]
+        }
+    ];
+  }
+
+
 const CarbonEmissionOverTimeChart: React.FunctionComponent<IWidgetProps> = (props) => {
+ 
+  const series = getOvertimeData();
+
+  const categories = series.map((item) => item.year);  
+
     const [startDate, setStartDate] = React.useState<Date | null>(new Date());
     const [endDate, setEndDate] = React.useState<Date | null>(new Date());
     const [currentFilter, setCurrentFilter] = React.useState< string| null>( null);
-    
-    const options: Highcharts.Options = {
+     
+
+    const options = {
+        chart: {
+          type: 'column'
+        },
         title: {
-            text: 'Carbon Emission Over Time'
+          text: ''
         },
-
         xAxis: {
-            categories: ['2019', '2020', '2021', '2022', '2023'] //  the categories for the x-axis
+           categories: categories 
         },
-
         yAxis: {
-            title: {
-                text: 'Emission (kgCo2e)' //  name for the x-axis
-            }
+          min: 0,
+          title: {
+            text: 'Emission (kgCO2e)'
+          }
         },
-        series: [{
-            name: 'Transportation',
-            color: 'red',
-            type: 'area',
-            data: [3, 4, 5, 6, 7]
-        }, {
-            name: 'Manufacturing',
-            type: 'area',
-            data: [4, 5, 6, 7, 8]
-        }, {
-            name: 'Extraction of Raw materials',
-            type: 'area',
-            data: [6, 7, 8, 9, 10]
-        }],
+        tooltip: {
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+          shared: true
+        },
+        plotOptions: {
+          column: {
+            stacking: 'percent'
+          }
+        },
+        series: series,
         credits: {
           enabled: false  
         }
-    };
+      };
 
     const chartComponentRef = React.useRef<HighchartsReact.RefObject>(null);
 
@@ -92,12 +125,17 @@ const CarbonEmissionOverTimeChart: React.FunctionComponent<IWidgetProps> = (prop
                 </div>
             </TitleBar>
 
-            <HighchartsReact
+            {/* <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
                 ref={chartComponentRef}
                 {...props}
-            />
+            /> */}
+
+
+                <HighchartsReact highcharts={Highcharts} options={options} />
+
+
         </WidgetWrapper>
     );
 }

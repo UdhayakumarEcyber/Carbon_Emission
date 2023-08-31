@@ -9,8 +9,10 @@ interface ProductTypeListProps {
 }
 
 
-const ProductTypeList: React.FunctionComponent<{}> = (props) => {  
-  const list = [
+
+function getData() {
+
+  return [
     {
       id: 'a',
       list_lable: 'Origin',
@@ -54,6 +56,58 @@ const ProductTypeList: React.FunctionComponent<{}> = (props) => {
       list_type : 'kgCO2e'
     } 
   ];
+}
+
+const ProductTypeList: React.FunctionComponent<{}> = (props) => {  
+
+
+  // const list = [
+  //   {
+  //     id: 'a',
+  //     list_lable: 'Origin',
+  //     list_lable_color: '#0088FE',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   },
+  //   {
+  //     id: 'b',
+  //     list_lable: 'Transport Site to Site',
+  //     list_lable_color: '#00C49F',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   },
+  //   {
+  //     id: 'c',
+  //     list_lable: 'Manufacturing process',
+  //     list_lable_color: '#FFBB28',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   },
+  //   {
+  //     id: 'd',
+  //     list_lable: 'Transport Site to port',
+  //     list_lable_color: '#FF8042',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   },
+  //   {
+  //     id: 'e',
+  //     list_lable: 'Transport port to port',
+  //     list_lable_color: '#AFB928',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   },
+  //   {
+  //     id: 'f',
+  //     list_lable: 'Transport port to client',
+  //     list_lable_color: '#FF8042',
+  //     list_value : 50.25,
+  //     list_type : 'kgCO2e'
+  //   } 
+  // ];
+
+
+  const list= getData();
   
   const ProductType = () => {
     return (

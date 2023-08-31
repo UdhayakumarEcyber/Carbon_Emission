@@ -15,39 +15,36 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
     let [inputValue, setInputValue] = React.useState<string | null>('CAPITALLAND');
     let [selected, setSelected] = React.useState<string | null>('op-1');
     const [checkedItems, setCheckedItems] = useState<string[]>([]); // Lift state up
-  
+
     interface CheckboxListProps {
         checkedItems: string[];
         setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>;
-      }
+        } 
 
-      
+        
+    function getTypeListData() {
 
-    function CheckboxList({ checkedItems, setCheckedItems }: CheckboxListProps) {
- 
+        return [
+            { id: 1, label: 'Type 1', value: '358', color : '#66bff1' },
+            { id: 2, label: 'Type 2', value: '267', color : '#1a7f55'  },
+            { id: 3, label: 'Type 3', value: '354', color : '#692a72'  }, 
+            { id: 4, label: 'Type 4', value: '268', color : '#7a331b'  },
+            { id: 5, label: 'Type 5', value: '315', color : '#eb98ac'  },
+            { id: 6, label: 'Type 6', value: '105', color : '#638aad'  }, 
+            { id: 7, label: 'Type 7', value: '187', color : '#43b290'  },
+            { id: 8, label: 'Type 8', value: '305', color : '#676419' },
+            { id: 9, label: 'Type 9',  value: '264', color : '#48aa9e' }, 
+            { id: 10, label: 'Type 10', value: '085', color : '#ba6ff1' },
+            { id: 11, label: 'Type 11', value: '295', color : '#8f802b' },
+            { id: 12, label: 'Type 12', value: '261', color : '#e78974'  }
+        ];
+    }
 
-     const [selectAll, setSelectAll] = useState(false); 
-       // const [showCheckedItems, setShowCheckedItems] = useState(false); 
 
-//   const handleToggleCheckedItems = () => {
-//     setShowCheckedItems(!showCheckedItems);
-//   }; 
+    function CheckboxList({ checkedItems, setCheckedItems }: CheckboxListProps) { 
 
-
-    const itemTypeList = [
-      { id: 1, label: 'Type 1', value: '358', color : '#66bff1' },
-      { id: 2, label: 'Type 2', value: '267', color : '#1a7f55'  },
-      { id: 3, label: 'Type 3', value: '354', color : '#692a72'  }, 
-      { id: 4, label: 'Type 4', value: '268', color : '#7a331b'  },
-      { id: 5, label: 'Type 5', value: '315', color : '#eb98ac'  },
-      { id: 6, label: 'Type 6', value: '105', color : '#638aad'  }, 
-      { id: 7, label: 'Type 7', value: '187', color : '#43b290'  },
-      { id: 8, label: 'Type 8', value: '305', color : '#676419' },
-      { id: 9, label: 'Type 9',  value: '264', color : '#48aa9e' }, 
-      { id: 10, label: 'Type 10', value: '085', color : '#ba6ff1' },
-      { id: 11, label: 'Type 11', value: '295', color : '#8f802b' },
-      { id: 12, label: 'Type 12', value: '261', color : '#e78974'  }, 
-    ];   
+     const [selectAll, setSelectAll] = useState(false);  
+     const itemTypeList = getTypeListData(); 
       
       const handleSelectAll = () => {
         if (selectAll) {
@@ -71,52 +68,58 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
       } else {
         setCheckedItems([...checkedItems, itemId]);
       }
-    }; 
+    };  
 
-        const list = [
-          {
-            id: 'a',
-            list_lable: 'Origin',
-            list_lable_color: '#0088FE',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          },
-          {
-            id: 'b',
-            list_lable: 'Transport Site to Site',
-            list_lable_color: '#00C49F',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          },
-          {
-            id: 'c',
-            list_lable: 'Manufacturing process',
-            list_lable_color: '#FFBB28',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          },
-          {
-            id: 'd',
-            list_lable: 'Transport Site to port',
-            list_lable_color: '#FF8042',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          },
-          {
-            id: 'e',
-            list_lable: 'Transport port to port',
-            list_lable_color: '#AFB928',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          },
-          {
-            id: 'f',
-            list_lable: 'Transport port to client',
-            list_lable_color: '#FF8042',
-            list_value : 50.25,
-            list_type : 'kgCO2e'
-          } 
+                
+    function getListData() {
+
+        return [
+            {
+                id: 'a',
+                list_lable: 'Origin',
+                list_lable_color: '#0088FE',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            },
+            {
+                id: 'b',
+                list_lable: 'Transport Site to Site',
+                list_lable_color: '#00C49F',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            },
+            {
+                id: 'c',
+                list_lable: 'Manufacturing process',
+                list_lable_color: '#FFBB28',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            },
+            {
+                id: 'd',
+                list_lable: 'Transport Site to port',
+                list_lable_color: '#FF8042',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            },
+            {
+                id: 'e',
+                list_lable: 'Transport port to port',
+                list_lable_color: '#AFB928',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            },
+            {
+                id: 'f',
+                list_lable: 'Transport port to client',
+                list_lable_color: '#FF8042',
+                list_value : 50.25,
+                list_type : 'kgCO2e'
+            } 
         ];
+    }
+ 
+   const list = getListData();
 
         const ProductType = () => {
           return (
@@ -129,49 +132,51 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
                     <h3> {item.list_value} </h3> 
                     <span> {item.list_type} </span>  
                   
-                </div>
-      
+                </div> 
       
               ))}
             </div>
           );
-        };
-
-
+        }; 
         
       const [selectAll1, setSelectAll1] = useState(false);
   
       const [showCheckedItems1, setShowCheckedItems1] = useState(true);  
-      
-    
-      const handleSelectAll1 = () => {
-        if (selectAll1) {
-          setCheckedItems1([]);
-        } else {
-          setCheckedItems1(productList.map((item) => item.label));
-        }
-        setSelectAll1(!selectAll1);
-      };
-  
-      const handleToggleCheckedItems1 = () => {
-          setShowCheckedItems1(!showCheckedItems1);
+
+        const handleSelectAll1 = () => {
+            if (selectAll1) {
+            setCheckedItems1([]);
+            } else {
+            setCheckedItems1(productList.map((item) => item.label));
+            }
+            setSelectAll1(!selectAll1);
         };
 
-  
-      const productList = [
-          { id: 1, label: 'Product 1', value: '358', color : '#66bff1' },
-          { id: 2, label: 'Product 2', value: '267', color : '#1a7f55'  },
-          { id: 3, label: 'Product 3', value: '354', color : '#692a72'  }, 
-          { id: 4, label: 'Product 4', value: '268', color : '#7a331b'  },
-          { id: 5, label: 'Product 5', value: '315', color : '#eb98ac'  },
-          { id: 6, label: 'Product 6', value: '105', color : '#638aad'  }, 
-          { id: 7, label: 'Product 7', value: '187', color : '#43b290'  },
-          { id: 8, label: 'Product 8', value: '305', color : '#676419' },
-          { id: 9, label: 'Product 9',  value: '264', color : '#48aa9e' }, 
-          { id: 10, label: 'Product 10', value: '085', color : '#ba6ff1' },
-          { id: 11, label: 'Product 11', value: '295', color : '#8f802b' },
-          { id: 12, label: 'Product 12', value: '261', color : '#e78974'  }, 
-        ];
+        const handleToggleCheckedItems1 = () => {
+            setShowCheckedItems1(!showCheckedItems1);
+            };
+        
+
+                
+        function getProductListData() {
+
+            return [
+                { id: 1, label: 'Type 1', value: '358', color : '#66bff1' },
+                { id: 2, label: 'Type 2', value: '267', color : '#1a7f55'  },
+                { id: 3, label: 'Type 3', value: '354', color : '#692a72'  }, 
+                { id: 4, label: 'Type 4', value: '268', color : '#7a331b'  },
+                { id: 5, label: 'Type 5', value: '315', color : '#eb98ac'  },
+                { id: 6, label: 'Type 6', value: '105', color : '#638aad'  }, 
+                { id: 7, label: 'Type 7', value: '187', color : '#43b290'  },
+                { id: 8, label: 'Type 8', value: '305', color : '#676419' },
+                { id: 9, label: 'Type 9',  value: '264', color : '#48aa9e' }, 
+                { id: 10, label: 'Type 10', value: '085', color : '#ba6ff1' },
+                { id: 11, label: 'Type 11', value: '295', color : '#8f802b' },
+                { id: 12, label: 'Type 12', value: '261', color : '#e78974'  }
+            ];
+        }
+
+        const productList = getProductListData();
 
 
           const [searchProductQuery, setsearchProductQuery] = useState("");
@@ -251,13 +256,10 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
                               </li>
                             ))}
                         </ul> 
-
-
-                        
-
+ 
 
                       
-<Modal title='PRODUCT WISE CARBON EMISSION'
+        <Modal title='PRODUCT WISE CARBON EMISSION'
               show={showModal}
               onOpen={() => { }}
               onClose={() => setShowModal(false)}  
@@ -367,10 +369,10 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
                                   ))}
                               </ul>  
 
-                      </div> 
+                        </div> 
 
-                  </div>
-          </div>
+                    </div>
+            </div>
 
 
                 <div className='product-emission'>
@@ -394,8 +396,7 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
 
                                   <div className='emission-check-list'>
                                       <ProductType />
-
-                                  
+                                      
                                   </div>
 
                               </div>
@@ -405,33 +406,27 @@ const EmissionTypeOverall: React.FunctionComponent<{}> = (props) => {
                         )}   
 
 
-          </div>
+                </div>
 
-          <div className='emission-overtime-chart'>       
-                <CarbonEmissionOverTimeChart/>
-          </div>
+                <div className='emission-overtime-chart'>       
+                        <CarbonEmissionOverTimeChart/>
+                </div>
 
           </Modal>
 
 
-            </div>  
-
-           
+            </div>   
 
       </> 
 
     );
   }
 
- 
- 
- 
+  
 
-    return (  
+    return (   
 
-
-        <>
- 
+        <> 
             <div className="overall-section" style={{ display: 'inline-block', width: '100%' }}>
                 <div className="carbon_product_type">
                     <div className="product_type-list">

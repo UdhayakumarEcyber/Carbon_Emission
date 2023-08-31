@@ -43,10 +43,6 @@ function EmissionProductShow({ checkedItems, setCheckedItems }: EmissionProductS
       </>
     );
   }
-  
- 
- 
- 
-
+   
 
 export default EmissionProductShow;
