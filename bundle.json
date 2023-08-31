@@ -1,0 +1,23 @@
+{
+    "id": "c2257a94-f256-4e22-9f85-d6c89cdaa646",
+    "author": "",
+    "widgets": [
+        {
+            "id": "carbon_Emisison",
+            "name": "Carbon_Emisison",
+            "description": "A sample widget",
+            "icon": "",
+            "tags":[]
+        } 
+        
+    ],
+    "sidebarLinks": [
+        
+    ],
+    "uis": [
+       
+    ],
+    "menuItems": [
+        
+    ]
+}

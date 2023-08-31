@@ -1,0 +1,37 @@
+{
+    "id": "aedeb968-3b3b-4e25-da87-01701d443480",
+    "author": "",
+    "widgets": [
+        {
+            "id": "Carbon_Emisison",
+            "name": "Carbon_Emisison",
+            "description": "A sample widget",
+            "icon": "",
+            "tags":[]
+        }
+    ],
+    "sidebarLinks": [
+        {
+            "id": "Carbon_EmisisonLink",
+            "label": "",
+            "description": "",
+            "target": "",
+            "icon": "",
+            "roles":[]
+        }
+    ],
+    "uis": [
+        {
+            "id": "Carbon_EmisisonLink",
+            "label":"",
+            "description": "",
+            "roles": []
+        }
+    ],
+    "menuItems": [
+        {
+            "id": "Carbon_EmisisonLink",
+            "title": "Carbon_Emisison"
+        }
+    ]
+}
