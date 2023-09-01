@@ -64,7 +64,7 @@ const CarbonEmissionOverTimeChart: React.FunctionComponent<IWidgetProps> = (prop
 
     const options = {
         chart: {
-          type: 'column'
+          type: 'area'
         },
         title: {
           text: ''
